@@ -1,124 +1,62 @@
-<script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #0082BB;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #0082BB;
+	}
+</style>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>            var j$ = jQuery.noConflict();
-        
-            var initESW = function(gslbBaseURL) {
-                embedded_svc.settings.displayHelpButton = true;
-                embedded_svc.settings.defaultMinimizedText = 'LET\'S CHAT';
-                
-                embedded_svc.settings.extraPrechatInfo = [{
-                    "entityName": "Billing_Account__c",
-                    "entityFieldMaps": [{
-                        "isExactMatch": true,
-                        "fieldName": "Name",
-                        "doCreate": false,
-                        "doFind": true,
-                        "label": "Billing Account"
-                    }]
-                },{
-                    "entityName": "Property__c",
-                    "entityFieldMaps": [{
-                        "isExactMatch": false,
-                        "fieldName": "Name",
-                        "doCreate": false,
-                        "doFind": true,
-                        "label": "Property Address"
-                    }]
-                },{
-                    "entityName": "Contact",
-                    "entityFieldMaps": [{
-                        "isExactMatch": false,
-                        "fieldName": "FirstName",
-                        "doCreate": false,
-                        "doFind": true,
-                        "label": "First Name"
-                    },{
-                        "isExactMatch": false,
-                        "fieldName": "LastName",
-                        "doCreate": false,
-                        "doFind": true,
-                        "label": "Last Name"
-                    }],
-                    "entityName": "Billing_Account__c",
-                    "saveToTranscript": "Billing_Account__c",
-                    "entityName":"Contact"
-                }];
-                
-                embedded_svc.settings.extraPrechatFormDetails = [{
-                    "label": "First Name",
-                    "displayToAgent": true,
-                    "transcriptFields":["First_Name__c"]
-                },{
-                    "label": "Last Name",
-                    "displayToAgent": true,
-                    "transcriptFields":["Last_Name__c"]
-                },{
-                    "label": "Billing Account",
-                    "displayToAgent": true,
-                    "transcriptFields":["Billing_Account_2__c"]
-                },{
-                    "label": "Property Address",
-                    "displayToAgent": true,
-                    "transcriptFields":["Property_Address__c"]
-                },{
-                    "label": "What is your enquiry about?",
-                    "displayToAgent": true,
-                    "transcriptFields":["Enquiry_About_c__c"]
-                },{
-                    "label": "Enquiry Source Page",
-                    "displayToAgent": true,
-                    "transcriptFields":["Enquiry_Source_Page__c"],
-                    "value":"Tenant Moving Form"
-                }];
-                embedded_svc.settings.prechatBackgroundImgURL = 'https://full2-southeastwater.cs152.force.com/public/resource/1557303980000/ChatResources/snap-ins-pre-chat-banner.png';
-                embedded_svc.settings.avatarImgURL = 'https://full2-southeastwater.cs152.force.com/public/resource/1557303980000/ChatResources/avatar.png';
-                
-                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-                embedded_svc.settings.entryFeature = 'LiveAgent';
-                
-                embedded_svc.init(
-                    'https://southeastwater--full2.my.salesforce.com',
-                    'https://full2-southeastwater.cs152.force.com/public',
-                    gslbBaseURL,
-                    '00D5P0000009PMm',
-                    'LEX_Chat_Group',
-                    {
-                        baseLiveAgentContentURL: 'https://c.la1-c1cs-cdu.salesforceliveagent.com/content',
-                        deploymentId: '5725P00000000XO',
-                        buttonId: '5735P00000000Kt',
-                        baseLiveAgentURL: 'https://d.la1-c1cs-cdu.salesforceliveagent.com/chat',
-                        eswLiveAgentDevName: 'LEX_Chat_Group',
-                        isOfflineSupportEnabled: false
-                    }
-                );
-                
-            };
-        
-            j$.ajax({
-                headers:{  
-                    "Accept":"application/json",
-                },   url:"https://full2-southeastwater.cs152.force.com/public/services/apexrest/livechatavailablehours",
-                success:function(response){
-                    var result = JSON.parse(response);
-                    
-                    if (result) {
-                        if (!window.embedded_svc) {
-                            var s = document.createElement('script');
-                            s.setAttribute('src', 'https://southeastwater--full2.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-                            
-                            s.onload = function() {
-                                initESW(null);
-                            };
-                            
-                            document.body.appendChild(s);
-                            
-                        } else {
-                            
-                            initESW('https://service.force.com');
-                            
-                        }
-                    }
-                }
-            });
-        
-        </script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://southeastwater--full2.my.salesforce.com',
+			'https://full2-southeastwater.cs152.force.com/public',
+			gslbBaseURL,
+			'00D5P0000009PMm',
+			'LEX_Chat_Group',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1cs-cdu.salesforceliveagent.com/content',
+				deploymentId: '5725P00000000XP',
+				buttonId: '5735P00000000Kt',
+				baseLiveAgentURL: 'https://d.la1-c1cs-cdu.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'LEX_Chat_Group',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://southeastwater--full2.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
