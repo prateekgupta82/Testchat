@@ -1,7 +1,8 @@
 <script type='text/javascript' src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>            
-			var j$ = jQuery.noConflict();        
+        <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+        <script type='text/javascript'>
+            var j$ = jQuery.noConflict();
+        
             var initESW = function(gslbBaseURL) {
                 embedded_svc.settings.displayHelpButton = true;
                 embedded_svc.settings.defaultMinimizedText = 'LET\'S CHAT';
@@ -38,10 +39,7 @@
                         "doCreate": false,
                         "doFind": true,
                         "label": "Last Name"
-                    }],
-                    "entityName": "Billing_Account__c",
-                    "saveToTranscript": "Billing_Account__c",
-                    "entityName":"Contact"
+                    }]
                 }];
                 
                 embedded_svc.settings.extraPrechatFormDetails = [{
@@ -71,7 +69,7 @@
                     "value":"Tenant Moving Form"
                 }];
                 embedded_svc.settings.prechatBackgroundImgURL = 'https://full2-southeastwater.cs152.force.com/public/resource/1557303980000/ChatResources/snap-ins-pre-chat-banner.png';
-                embedded_svc.settings.avatarImgURL = 'https://full2-southeastwater.cs152.force.com/public/resource/1557303980000/ChatResources/avatar.png';
+                embedded_svc.settings.avatarImgURL = 'https://full2-southeastwater.cs152.force.com/public/resource/1557303980000/ChatResources/snap-ins-pre-chat-banner.png/resource/1557303980000/ChatResources/avatar.png';
                 
                 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
                 embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -81,13 +79,13 @@
                     'https://full2-southeastwater.cs152.force.com/public',
                     gslbBaseURL,
                     '00D5P0000009PMm',
-                    'LEX_Chat_Group',
+                    'SEWL_Live_Agent',
                     {
                         baseLiveAgentContentURL: 'https://c.la1-c1cs-cdu.salesforceliveagent.com/content',
-                        deploymentId: '5725P00000000XO',
-                        buttonId: '5735P00000000Kt',
+                        deploymentId: '57290000000GnSJ',
+                        buttonId: '57390000000GnWR',
                         baseLiveAgentURL: 'https://d.la1-c1cs-cdu.salesforceliveagent.com/chat',
-                        eswLiveAgentDevName: 'LEX_Chat_Group',
+                        eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I5K0000000001UAA_16a9697844d',
                         isOfflineSupportEnabled: false
                     }
                 );
